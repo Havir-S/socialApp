@@ -17,10 +17,10 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const location = useLocation();
-    console.log(api);
+
 
     const logout = () => {
-        console.log('aa')
+
         dispatch({ type: 'LOGOUT'})
 
         history.push('/')
@@ -33,7 +33,6 @@ const Navbar = () => {
 
         if(token) {
             const decodedToken = decode(token)
-            console.log(token);
             if(decodedToken.exp * 1000 < new Date().getTime()) {
                 logout();
             }

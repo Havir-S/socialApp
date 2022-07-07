@@ -19,6 +19,7 @@ const Auth = () => {
     const history = useHistory('');
 
     async function handleCallbackResponse(response) {
+        console.log(response)
         const result = jwt_decode(response?.credential)
         console.log(result)
         const token = result.exp;
@@ -34,15 +35,7 @@ const Auth = () => {
 
     useEffect(() => {
         /* global google */
-        google.accounts.id.initialize({
-            client_id: 'GOOGLE CLIENT_ID',
-            callback: handleCallbackResponse
-        });
 
-        google.accounts.id.renderButton(
-            document.getElementById('signInDiv'),
-            {theme: 'outline', size: 'large'}
-        )
     }, [])
 
     const handleShowPassword = () => {
